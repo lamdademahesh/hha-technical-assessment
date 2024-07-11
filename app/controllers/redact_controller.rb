@@ -6,12 +6,23 @@ class RedactController < ApplicationController
   end
 
   def modify
-    statement = params["_json"]
-    regex = Regexp.new("\\b(?:#{REDACTION_WORDS.join('|')})\\b", Regexp::IGNORECASE)
-    CUSTOM_LOGGER.info("Original statement : #{statement}")
-    updated_statement = statement.gsub(regex, "REDACTED")
-    CUSTOM_LOGGER.info("Original statement : #{updated_statement}")
-    # Replace the matched REDACTION_WORDS with the word 'REDACTED'
+    statement = params["_json"]        
+    log_data(statement)
+    updated_statement = replace_words(statement)
+    log_data('updated', updated_statement)    
     render json: updated_statement
+  end
+
+  private
+
+  def replace_words(statement)
+    # Generate regex to match the words in the statement irrespective of the case
+    regex = Regexp.new("\\b(?:#{REDACTION_WORDS.join('|')})\\b", Regexp::IGNORECASE)
+    # Replace the matched REDACTION_WORDS with the word 'REDACTED'
+    statement.gsub(regex, "REDACTED")
+  end
+
+  def log_data(stmt_type='original', statement)
+    CUSTOM_LOGGER.info("#{ stmt_type == 'original' ? 'Original' : 'Updated' } statement : #{statement}")
   end
 end
