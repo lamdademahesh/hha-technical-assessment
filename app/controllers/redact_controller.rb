@@ -2,10 +2,7 @@ class RedactController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index 
-    render json: "Redaction Service", status: :ok 
-  end
-
-  def modify
+    return render json: "Redaction Service", status: :ok if request.get?
     statement = params["_json"]        
     log_data(statement)
     updated_statement = replace_words(statement)
