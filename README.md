@@ -1,24 +1,18 @@
-# README
+# Redact application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Redact application provides a simple interface that has returns data based on the type of request(GET or POST). The `\redact` is the path that's available to interact with the application.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+For using the application, you need the following installed in the system
 
-* System dependencies
+- Ruby 3.2.2 
+- Rails 7.1 
 
-* Configuration
+## Usage 
 
-* Database creation
+To use the application, perform the following steps :
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Clone this repository
+* Ensure the correct versions of prerequisites are installed for running the code 
+* Run the application by running the following : `rails s`. This will run the application on the default port 3000. You can specify the port we want to run the app by using the command : `rails s -p port` where port is the port number you want to use.
