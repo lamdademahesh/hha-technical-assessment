@@ -1,0 +1,2 @@
+class RedactController < ApplicationController
+end
