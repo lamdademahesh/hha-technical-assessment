@@ -1,0 +1,1 @@
+REDACTION_WORDS = %w[Dog Cat Snake Dolphin Mammal].freeze
