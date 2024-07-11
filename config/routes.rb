@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   match "/redact", to: 'redact#index', via: [:get, :post]
 
+  match "*unmatched_route", to: "application#route_not_found", via: :all
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

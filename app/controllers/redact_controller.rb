@@ -1,9 +1,8 @@
 class RedactController < ApplicationController  
-  protect_from_forgery with: :null_session
-
   def index 
     return render json: "Redaction Service", status: :ok if request.get?
-    statement = params["_json"]             
+    statement = params["_json"]  
+    return render json: "" unless statement.present?           
     render json: update_redaction_words(statement)
   end
 
