@@ -14,5 +14,5 @@ For using the application, you need the following installed in the system
 To use the application, perform the following steps :
 
 * Clone this repository
-* Ensure the correct versions of prerequisites are installed for running the code 
+* Ensure the correct versions of prerequisites are installed for running the code. You might need to run `bundle install` once you pull the repo & versions are set correctly.
 * Run the application by running the following : `rails s`. This will run the application on the default port 3000. You can specify the port we want to run the app by using the command : `rails s -p port` where port is the port number you want to use.
