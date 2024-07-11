@@ -3,11 +3,8 @@ class RedactController < ApplicationController
 
   def index 
     return render json: "Redaction Service", status: :ok if request.get?
-    statement = params["_json"]        
-    log_data(statement)
-    updated_statement = replace_words(statement)
-    log_data('updated', updated_statement)    
-    render json: updated_statement
+    statement = params["_json"]             
+    render json: update_redaction_words(statement)
   end
 
   private
@@ -21,5 +18,12 @@ class RedactController < ApplicationController
 
   def log_data(stmt_type='original', statement)
     CUSTOM_LOGGER.info("#{ stmt_type == 'original' ? 'Original' : 'Updated' } statement : #{statement}")
+  end
+
+  def update_redaction_words(statement)
+    log_data(statement)
+    updated_statement = replace_words(statement)
+    log_data('updated', updated_statement)    
+    updated_statement
   end
 end
