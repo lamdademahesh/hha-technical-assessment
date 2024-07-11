@@ -2,8 +2,8 @@ class RedactController < ApplicationController
   def index 
     return render json: "Redaction Service", status: :ok if request.get?
     statement = params["_json"]  
-    return render json: "" unless statement.present?           
-    render json: update_redaction_words(statement)
+    return render json: "Missing param", status: :unprocessable_entity unless statement.present?           
+    render json: update_redaction_words(statement), status: :ok
   end
 
   private
